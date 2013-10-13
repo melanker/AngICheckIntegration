@@ -1,0 +1,27 @@
+ul {
+    clear: both;
+    list-style-type: none;
+    width: 400px;
+}
+
+li {
+    float: left;
+}
+
+li.created {
+    width: 100px;
+    cursor: pointer;
+}
+
+li.ip {
+    width: 100px;
+}
+
+li.status {
+    width: 100px;
+    padding-left: 10px;
+}
+
+.selected {
+    background-color: red;
+}

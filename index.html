@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="webApp">
+<head>
+    <script src="js/libs/angular.js"></script>
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/libs/jquery.icheck.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/minimal/grey.css" />
+</head>
+<body ng-controller="VotesCtrl">
+<div>
+    <ul>
+        <li class="check" ng-click="">
+            <input type="checkbox" ng-model="master" />
+        </li>
+        <li class="created">
+            <a>CREATED</a>
+        </li>
+        <li class="ip">
+            <b>IP ADDRESS</b>
+        </li>
+        <li class="status">
+            <b>STATUS</b>
+        </li>
+    </ul>
+    <ul ng-repeat="vote in votes">
+        <li class="check">
+            <input type="checkbox" ng-model="vote.cb" ng-checked="master" />
+        </li>
+        <li class="created" ng-class="{selected: vote.id == selectedID}">
+            <a href="#" ng-click="expand(vote)">{{vote.created|date}}</a>
+        </li>
+        <li class="ip">
+            {{vote.ip}}
+        </li>
+        <li class="status">
+            {{vote.status}}
+        </li>
+    </ul>
+</div>
+<br />
+<br />
+<div class="details" ng-init="expand(votes[0])">
+    <h3>Details:</h3>
+    <div>DATE: {{vote.created | date}}</div>
+    <div>IP: {{vote.ip}}</div>
+    <div >
+        Cookies:
+        <div>
+            <input icheck type="radio" ng-model="vote.userIdentification" name="iCheck" value="FLASH-COOKIES" />
+            <span>FLASH COOKIES</span>
+        </div>
+        <div>
+            <input icheck type="radio" ng-model="vote.userIdentification" name="iCheck" value="HTTP-COOKIES" />
+            <span>HTTP COOKIES</span>
+        </div>
+        <div>
+            <input icheck type="radio" ng-model="vote.userIdentification" name="iCheck" value="IP-ADDRESS" />
+            <span>IP ADDRESS</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
